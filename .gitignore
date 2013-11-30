@@ -1,0 +1,8 @@
+*.swp
+.netrwhist
+dict.add
+dict.add.spl
+eclim
+eclim.*
+bundle/*
+bundle

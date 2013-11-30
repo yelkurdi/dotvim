@@ -1,0 +1,25 @@
+Name: Yousef El-Kurdi
+
+Suggested reference: http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
+
+Installation:
+  1-  Clone the configurations:
+    $> git clone https://github.com/yelkurdi/dotvim.git ~/.vim
+
+  2- Create symbolic links (Not needed for Ubuntu/Linux):
+    $> ln -s ~/.vim/vimrc ~/.vimrc
+    $> ln -s ~/.vim/gvimrc ~/.gvimrc
+
+  3-  Install configured bundles:
+    $> git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    Launch vim, run :BundleInstall 
+
+Install of sublimentary software
+
+  1- vim-latexsuite on Ubuntu from command line as follows:
+  $> sudo apt-get install vim-latexsuite
+  $> sudo vim-addons -w install latex-suite
+
+  2- ctags
+  $> sudo apt-get install exuberant-ctags
+
