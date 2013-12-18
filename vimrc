@@ -38,7 +38,8 @@ Bundle 'FuzzyFinder'
 "Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...
 
-filetype plugin indent on     " required!
+filetype indent plugin on     " required!
+filetype on
 "
 " Brief help
 " :BundleList          - list configured bundles
