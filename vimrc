@@ -38,8 +38,8 @@ Bundle 'FuzzyFinder'
 "Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...
 
-filetype indent plugin on     " required!
 filetype on
+filetype indent plugin on     " required!
 "
 " Brief help
 " :BundleList          - list configured bundles
@@ -53,7 +53,8 @@ filetype on
 " Vundle settings ends
 "*****************************
 
-synt on
+syntax on
+syntax spell toplevel
 
 set history=200
 
