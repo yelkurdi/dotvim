@@ -195,16 +195,16 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 set laststatus=2
 
 set statusline=
-set statusline+=%0*\[%n]                                  "buffernr
-set statusline+=%0*\ %<%f\                                "file for File+path use: F
-set statusline+=%0*\ \ %m%r%w\ \                          "Modified? Readonly? 
-set statusline+=%2*\ %y\                                  "FileType
-set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
-set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
-set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..) 
-set statusline+=%5*\ %{&spelllang}\ %{HighlightSearch()}\  "Spellanguage & Highlight on?
-set statusline+=%8*\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
-set statusline+=%9*\ col:%03c\                            "Colnr
+set statusline+=\[%n]                                  "buffernr
+set statusline+=\ %<%f\                                "file for File+path use: F
+set statusline+=\ \ %m%r%w\ \                          "Modified? Readonly? 
+set statusline+=\ %y\                                  "FileType
+set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}\     "Encoding
+set statusline+=\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
+set statusline+=\ %{&ff}\                              "FileFormat (dos/unix..) 
+set statusline+=\ %{&spelllang}\ %{HighlightSearch()}\  "Spellanguage & Highlight on?
+set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
+set statusline+=\ col:%03c\                            "Colnr
 
 function! HighlightSearch()
   if &hls
@@ -213,7 +213,7 @@ function! HighlightSearch()
     return ''
   endif
 endfunction
-
+"
 hi User0 guifg=#ffffff  guibg=#094afe ctermfg=White ctermbg=Black
 hi User1 guifg=#ffdad8  guibg=#880c0e ctermfg=Black ctermbg=Black
 hi User2 guifg=#000000  guibg=#F4905C ctermfg=Black ctermbg=Cyan
@@ -223,11 +223,11 @@ hi User5 guifg=#051d00  guibg=#7dcc7d ctermfg=Black ctermbg=Green
 hi User7 guifg=#ffffff  guibg=#880c0e ctermfg=White ctermbg=Blue
 hi User8 guifg=#ffffff  guibg=#5b7fbb ctermfg=White ctermbg=Blue
 hi User9 guifg=#ffffff  guibg=#810085 ctermfg=White ctermbg=Magenta
-
+"
 " now set it up to change the status line based on mode
 if version >= 700
   au InsertEnter * hi StatusLine term=reverse ctermfg=Yellow ctermbg=Black gui=bold guifg=Black guibg=Yellow
-  au InsertLeave * hi StatusLine term=reverse ctermfg=White ctermbg=Black gui=bold guifg=White guibg=Black
+  au InsertLeave * hi StatusLine term=reverse ctermfg=White ctermbg=Black gui=bold guifg=Black guibg=White
 endif
 
 " Loading custom vim settings for different projects
