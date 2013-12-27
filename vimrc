@@ -24,7 +24,7 @@ Bundle 'tpope/vim-surround.git'
 Bundle 'scrooloose/nerdtree.git'
 "Bundle 'Valloric/YouCompleteMe.git'
 Bundle 'ervandew/supertab.git'
-Bundle 'vim-scripts/taglist.vim.git'
+"Bundle 'vim-scripts/taglist.vim.git'
 "Bundle 'scrooloose/syntastic.git'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
