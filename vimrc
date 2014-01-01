@@ -141,14 +141,14 @@ nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
 hi OverLength ctermbg=none cterm=none
 match OverLength /\%>80v/
 fun! s:LongLineHLToggle()
-  if !exists('w:longlinehl')
-    let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
-    echo "Long lines highlighted"
-  else
-    call matchdelete(w:longlinehl)
-    unl w:longlinehl
-    echo "Long lines unhighlighted"
-  endif
+    if !exists('w:longlinehl')
+        let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
+        echo "Long lines highlighted"
+    else
+        call matchdelete(w:longlinehl)
+        unl w:longlinehl
+        echo "Long lines unhighlighted"
+    endif
 endfunction
 " Activating highlights indicator after column 80 
 au BufWinEnter *.{c,cc,cpp,h,hpp} let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
@@ -169,11 +169,11 @@ vnoremap <Space> za
 nnoremap zO zCzO
 
 function! s:insert_gates()
-  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-  execute "normal! i#ifndef " . gatename
-  execute "normal! o#define " . gatename . " "
-  execute "normal! Go#endif /* " . gatename . " */"
-  normal! kk
+    let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+    execute "normal! i#ifndef " . gatename
+    execute "normal! o#define " . gatename . " "
+    execute "normal! Go#endif /* " . gatename . " */"
+    normal! kk
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
@@ -207,11 +207,11 @@ set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
 set statusline+=\ col:%03c\                            "Colnr
 
 function! HighlightSearch()
-  if &hls
-    return 'H'
-  else
-    return ''
-  endif
+    if &hls
+        return 'H'
+    else
+        return ''
+    endif
 endfunction
 "
 hi User0 guifg=#ffffff  guibg=#094afe ctermfg=White ctermbg=Black
@@ -226,19 +226,19 @@ hi User9 guifg=#ffffff  guibg=#810085 ctermfg=White ctermbg=Magenta
 "
 " now set it up to change the status line based on mode
 if version >= 700
-  au InsertEnter * hi StatusLine term=reverse ctermfg=Yellow ctermbg=Black gui=bold guifg=Black guibg=Yellow
-  au InsertLeave * hi StatusLine term=reverse ctermfg=White ctermbg=Black gui=bold guifg=Black guibg=White
+    au InsertEnter * hi StatusLine term=reverse ctermfg=Yellow ctermbg=Black gui=bold guifg=Black guibg=Yellow
+    au InsertLeave * hi StatusLine term=reverse ctermfg=White ctermbg=Black gui=bold guifg=Black guibg=White
 endif
 
 " Loading custom vim settings for different projects
 au BufNewFile,BufRead *.{c,cc,cpp,h,hpp} call CheckForCustomConfiguration()
 
 function! CheckForCustomConfiguration()
-  " Check for .vim.custom in the directory containing the newly opened file
-  let custom_config_file = expand('%:p:h') . '/.vim.custom'
-  if filereadable(custom_config_file)
-    exe 'source' custom_config_file
-  endif
+    " Check for .vim.custom in the directory containing the newly opened file
+    let custom_config_file = expand('%:p:h') . '/.vim.custom'
+    if filereadable(custom_config_file)
+        exe 'source' custom_config_file
+    endif
 endfunction
 
 " Gui options for gvim
@@ -260,14 +260,14 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='div, pdf, ps'
 " Set the warning messages to ignore.
 let g:Tex_IgnoredWarnings =
-\"Underfull\n".
-\"Overfull\n".
-\"specifier changed to\n".
-\"You have requested\n".
-\"Missing number, treated as zero.\n".
-\"There were undefined references\n".
-\"Citation %.%# undefined\n".
-\'LaTeX Font Warning:'"
+            \"Underfull\n".
+            \"Overfull\n".
+            \"specifier changed to\n".
+            \"You have requested\n".
+            \"Missing number, treated as zero.\n".
+            \"There were undefined references\n".
+            \"Citation %.%# undefined\n".
+            \'LaTeX Font Warning:'"
 " This number N says that latex-suite should ignore the first N of the above.
 let g:Tex_IgnoreLevel = 8
 let g:tex_indent_brace=0
@@ -279,23 +279,25 @@ set iskeyword+=:
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
-  " Enable file type detection
-  filetype on
-   
-  " Syntax of these languages is fussy over tabs Vs spaces
-  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-   
-  " Customisations based on house-style (arbitrary)
-  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType tex setlocal ts=4 sts=4 sw=4 noexpandtab
-   
-  " Treat .rss files as XML
-  autocmd BufNewFile,BufRead *.rss setfiletype xml
+    " Enable file type detection
+    filetype on
+
+    " Syntax of these languages is fussy over tabs Vs spaces
+    autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+    " Customisations based on house-style (arbitrary)
+    autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+    autocmd FileType tex setlocal ts=4 sts=4 sw=4 noexpandtab
+
+    " Treat .rss files as XML
+    autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
 
+" Set matlab file type .param in Getfem
+autocmd BufNewFile,BufRead *.param setfiletype matlab
 
 nnoremap <silent> <F3> :call <SID>StripTrailingWhitespaces()<CR>
 function! <SID>StripTrailingWhitespaces()
@@ -316,34 +318,34 @@ autocmd BufReadPost fugitive://* set bufhidden=delete " delete old fugitive buff
 " Tabularize mappings
 let mapleader=','
 if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
- 
+
 function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
+    let p = '^\s*|\s.*\s|\s*$'
+    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+        Tabularize/|/l1
+        normal! 0
+        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
 endfunction
 
 " The custom :Qargs command sets the arglist to contain each of the files referenced by the quickfix list.
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
-  " Building a hash ensures we get each buffer only once
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+    " Building a hash ensures we get each buffer only once
+    let buffer_numbers = {}
+    for quickfix_item in getqflist()
+        let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+    endfor
+    return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
 
@@ -361,15 +363,15 @@ endfunction
 " only the current buffer.
 
 function! SetLocalOptions(fname)
-	let dirname = fnamemodify(a:fname, ":p:h")
-	while "/" != dirname
-		let lvimrc  = dirname . "/.lvimrc"
-		if filereadable(lvimrc)
-			execute "source " . lvimrc
-			break
-		endif
-		let dirname = fnamemodify(dirname, ":p:h:h")
-	endwhile
+    let dirname = fnamemodify(a:fname, ":p:h")
+    while "/" != dirname
+        let lvimrc  = dirname . "/.lvimrc"
+        if filereadable(lvimrc)
+            execute "source " . lvimrc
+            break
+        endif
+        let dirname = fnamemodify(dirname, ":p:h:h")
+    endwhile
 endfunction
 
 au BufNewFile,BufRead * call SetLocalOptions(bufname("%"))
