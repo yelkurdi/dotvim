@@ -32,6 +32,9 @@ Bundle 'ervandew/supertab.git'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+"Bundle 'djoshea/vim-matlab-fold.git'
+Bundle 'lazywei/vim-matlab.git'
+"Bundle 'vim-scripts/octave.vim--.git'
 " non-GitHub repos
 "Bundle 'git://git.wincent.com/command-t.git'
 " Git repos on your local machine (i.e. when working on your own plugin)
@@ -297,7 +300,9 @@ if has("autocmd")
 endif
 
 " Set matlab file type .param in Getfem
-autocmd BufNewFile,BufRead *.param setfiletype matlab
+"autocmd BufNewFile,BufRead *.param set filetype=octave
+"autocmd BufNewFile,BufRead *.m set filetype=octave
+autocmd BufNewFile,BufRead *.param set filetype=matlab
 
 nnoremap <silent> <F3> :call <SID>StripTrailingWhitespaces()<CR>
 function! <SID>StripTrailingWhitespaces()
