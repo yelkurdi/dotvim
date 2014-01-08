@@ -22,6 +22,7 @@ Bundle 'godlygeek/tabular.git'
 Bundle 'sjl/gundo.vim.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'scrooloose/nerdtree.git'
+Bundle 'Rip-Rip/clang_complete'
 "Bundle 'Valloric/YouCompleteMe.git'
 Bundle 'msanders/snipmate.vim.git'
 Bundle 'ervandew/supertab.git'
@@ -57,8 +58,16 @@ filetype indent plugin on     " required!
 " Vundle settings ends
 "*****************************
 
+
 syntax on
 syntax spell toplevel
+
+" Set for clang_complete
+" ******************************
+"inoremap <C-Y> <C-O>dd
+let g:clang_library_path = '/usr/lib/llvm-3.4/lib'
+"let g:clang_complete_auto = 0
+"******************************
 
 set history=200
 

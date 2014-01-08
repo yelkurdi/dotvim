@@ -14,6 +14,13 @@ Installation:
     $> git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     Launch vim, run :BundleInstall 
 
+  3-  Clang installation
+    $> sudo apt-get install clang
+    $> sudo apt-get install clang-3.4
+    $> sudo apt-get install libclang-dev
+    $> sudo apt-get install libclang-3.4-dev
+    - Install clang_complete using the instructions from: https://github.com/Rip-Rip/clang_complete
+
 Install of sublimentary software
 
   1- vim-latexsuite on Ubuntu from command line as follows:
