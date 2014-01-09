@@ -1,5 +1,5 @@
 " Vundle and bundles configuration
-source bundles.vim
+source $HOME/.vim/bundles.vim
 
 syntax on
 syntax spell toplevel
