@@ -195,6 +195,8 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 " Key mapings
 " Indent all
+" Exit insert mode
+:imap jj <Esc>
 map <F2> mzgg=G`z<CR>
 " Inserting a line above in normal mode
 map <S-Enter> O<Esc>
