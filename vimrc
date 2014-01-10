@@ -121,7 +121,7 @@ inoremap {{     {
 inoremap {}     {}
 
 " Folding
-"set foldmethod=syntax
+set foldmethod=syntax
 nnoremap <Space> za
 vnoremap <Space> za
 nnoremap zO zCzO
