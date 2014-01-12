@@ -12,6 +12,9 @@ let g:clang_complete_auto = 1
 let g:clang_use_library=1
 "let g:clang_debug = 1
 "let g:clang_user_options = '-std=c++11'
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'clang_complete'
+set completeopt=menu,longest
 "******************************
 
 set history=200
@@ -115,10 +118,10 @@ au BufWinEnter *.{c,cc,cpp,h,hpp} let w:longlinehl = matchadd('ErrorMsg', '.\%>8
 set number
 
 " Closing braces
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+"inoremap {      {}<Left>
+"inoremap {<CR>  {<CR>}<Esc>O
+"inoremap {{     {
+"inoremap {}     {}
 
 " Folding
 set foldmethod=syntax
