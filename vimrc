@@ -157,15 +157,23 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " first, enable status line always
 set laststatus=2
 
+"set statusline=
+"set statusline+=\[%n]                                  "buffernr
+"set statusline+=\ %<%f\                                "file for File+path use: F
+"set statusline+=\ \ %m%r%w\ \                          "Modified? Readonly? 
+"set statusline+=\ %y\                                  "FileType
+"set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}\     "Encoding
+"set statusline+=\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
+"set statusline+=\ %{&ff}\                              "FileFormat (dos/unix..) 
+"set statusline+=\ %{&spelllang}\ %{HighlightSearch()}\  "Spellanguage & Highlight on?
+"set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
+"set statusline+=\ col:%03c\                            "Colnr
+
 set statusline=
 set statusline+=\[%n]                                  "buffernr
 set statusline+=\ %<%f\                                "file for File+path use: F
 set statusline+=\ \ %m%r%w\ \                          "Modified? Readonly? 
 set statusline+=\ %y\                                  "FileType
-set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}\     "Encoding
-set statusline+=\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
-set statusline+=\ %{&ff}\                              "FileFormat (dos/unix..) 
-set statusline+=\ %{&spelllang}\ %{HighlightSearch()}\  "Spellanguage & Highlight on?
 set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
 set statusline+=\ col:%03c\                            "Colnr
 
