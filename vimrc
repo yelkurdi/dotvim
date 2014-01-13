@@ -172,6 +172,7 @@ set laststatus=2
 set statusline=
 set statusline+=\[%n]                                  "buffernr
 set statusline+=\ %<%f\                                "file for File+path use: F
+set statusline+=\%{fugitive#statusline()}\             "Git current branch
 set statusline+=\ \ %m%r%w\ \                          "Modified? Readonly? 
 set statusline+=\ %y\                                  "FileType
 set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
