@@ -228,7 +228,6 @@ let g:Tex_DefaultTargetFormat='pdf'
 "let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
 "let g:Tex_ViewRule_pdf = 'xpdf -remote 127.0.0.1'
 " Set the target format to pdf.
-let g:Tex_DefaultTargetFormat = 'pdf' 
 let g:Tex_MultipleCompileFormats='div, pdf, ps'
 " Set the warning messages to ignore.
 let g:Tex_IgnoredWarnings =
