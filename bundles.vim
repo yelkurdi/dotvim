@@ -43,6 +43,7 @@ Bundle 'lazywei/vim-matlab.git'
 " Git repos on your local machine (i.e. when working on your own plugin)
 "Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...
+Bundle 'xuhdev/SingleCompile.git'
 
 filetype on
 filetype indent plugin on     " required!
