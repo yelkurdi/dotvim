@@ -88,7 +88,7 @@ set smartindent   " does the right thing (mostly) in programs
 
 " Text wrapping
 set wrap
-set showbreak=>>\ \ 
+set showbreak=\ \ 
 "set linebreak nolist " break lines cleanly at word boundaries
 
 " Searching
