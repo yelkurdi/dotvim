@@ -1,4 +1,4 @@
 " Color shemes
-colorscheme BlackSea
+colorscheme blacksea
 set bg=dark
 highlight Search guibg=darkyellow guifg=darkred
