@@ -37,6 +37,7 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 "Bundle 'djoshea/vim-matlab-fold.git'
 Bundle 'lazywei/vim-matlab.git'
+Bundle 'vim-scripts/Colour-Sampler-Pack.git'
 "Bundle 'vim-scripts/octave.vim--.git'
 " non-GitHub repos
 "Bundle 'git://git.wincent.com/command-t.git'
