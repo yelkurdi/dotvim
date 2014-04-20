@@ -12,7 +12,8 @@ Installation:
 
   3-  Install configured bundles:
     $> git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    $> vim -u bundles.vim +BundleInstall +q (first time only)
+    -  Execute for the first time only
+    $> vim -u ~/.vim/bundles.vim +BundleInstall +q
     Update modules, Launch vim, run :BundleInstall 
 
   3-  Clang installation
