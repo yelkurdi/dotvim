@@ -4,8 +4,44 @@ source $HOME/.vim/bundles.vim
 set nocp
 filetype indent plugin on     " required!
 
-" tags build map
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"Omnicomplete
+if v:version >= 700
+    set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
+
+    let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
+    let OmniCpp_DisplayMode         = 1
+    let OmniCpp_GlobalScopeSearch   = 1
+    let OmniCpp_MayCompleteArrow    = 1 " autocomplete after ->
+    let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
+    let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
+    let OmniCpp_NamespaceSearch     = 1
+    let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+    let OmniCpp_ShowAccess          = 1 "show access in pop-up
+    let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
+    let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
+
+    " automatically open and close the popup menu / preview window
+    au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+    set completeopt=menuone,menu,longest,preview
+    "set completeopt=menuone,menu,longest
+
+    " Modify colors
+    "highlight   clear
+    "highlight   Pmenu         ctermfg=0 ctermbg=2
+    "highlight   PmenuSel      ctermfg=0 ctermbg=7
+    "highlight   PmenuSbar     ctermfg=7 ctermbg=0
+    "highlight   PmenuThumb    ctermfg=0 ctermbg=7
+endif
+
+" ctags build map
+function! UpdateTags()
+    execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f proj.tags ./"
+    echohl StatusLine | echo "C/C++ tag updated" | echohl None
+endfunction
+nnoremap <C-F12> :call UpdateTags() <CR>
+
+" ctags files from system
+set tags+=~/.vim/tags/cpp.tags
 
 syntax on
 syntax spell toplevel
