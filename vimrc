@@ -1,21 +1,14 @@
 " Vundle and bundles configuration
 source $HOME/.vim/bundles.vim
 
+set nocp
+filetype indent plugin on     " required!
+
+" tags build map
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
 syntax on
 syntax spell toplevel
-
-" Set for clang_complete
-" ******************************
-"inoremap <C-Y> <C-O>dd
-let g:clang_library_path = '/usr/lib/llvm-3.4/lib'
-let g:clang_complete_auto = 1
-let g:clang_use_library=1
-"let g:clang_debug = 1
-"let g:clang_user_options = '-std=c++11'
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'clang_complete'
-set completeopt=menu,longest
-"******************************
 
 set history=200
 
