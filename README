@@ -16,12 +16,19 @@ Installation:
     $> vim -u ~/.vim/bundles.vim +BundleInstall +q
     Update modules, Launch vim, run :BundleInstall 
 
+  4- ctags
+     $> sudo apt-get install exuberant-ctags
+     - Create c/cpp tags 
+     $> cd ~/.vim/tags/
+     $> tar xjf cpp_src.tar.bz2
+     $> ./runCtags.sh
+     $> rm -rf cpp_src
+
 Install of sublimentary software
 
   1- vim-latexsuite on Ubuntu from command line as follows:
   $> sudo apt-get install vim-latexsuite
   $> sudo vim-addons -w install latex-suite
 
-  2- ctags
-  $> sudo apt-get install exuberant-ctags
+
 

@@ -6,3 +6,4 @@ eclim
 eclim.*
 bundle/*
 bundle
+*.tags
