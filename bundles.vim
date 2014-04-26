@@ -46,6 +46,8 @@ Bundle 'vim-scripts/OmniCppComplete.git'
 "Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...
 Bundle 'xuhdev/SingleCompile.git'
+"Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git'
+Bundle 'jcf/vim-latex.git'
 
 filetype on
 filetype indent plugin on     " required!

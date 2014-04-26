@@ -1,8 +1,41 @@
 " Vundle and bundles configuration
 source $HOME/.vim/bundles.vim
 
+syntax on
+syntax spell toplevel
+
+set history=200
+
 set nocp
 filetype indent plugin on     " required!
+"
+" vim-latexsuite
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+"let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
+"let g:Tex_ViewRule_pdf = 'xpdf -remote 127.0.0.1'
+" Set the target format to pdf.
+let g:Tex_MultipleCompileFormats='div, pdf, ps'
+" Set the warning messages to ignore.
+let g:Tex_IgnoredWarnings =
+            \"Underfull\n".
+            \"Overfull\n".
+            \"specifier changed to\n".
+            \"You have requested\n".
+            \"Missing number, treated as zero.\n".
+            \"There were undefined references\n".
+            \"Citation %.%# undefined\n".
+            \'LaTeX Font Warning:'"
+" This number N says that latex-suite should ignore the first N of the above.
+let g:Tex_IgnoreLevel = 8
+let g:tex_indent_brace=0
+" TIP: if you write your \label's as \label{fig:something}, then if you
+" type in \ref{fig: and press Ctrl-N you will automatically cycle through
+" all the figure labels. Very useful!
+set iskeyword+=:
+
+
 
 "Omnicomplete
 if v:version >= 700
@@ -42,11 +75,6 @@ nnoremap <C-F12> :call UpdateTags() <CR>
 
 " ctags files from system
 set tags+=~/.vim/tags/cpp.tags
-
-syntax on
-syntax spell toplevel
-
-set history=200
 
 " Map leader key
 let mapleader = ","
@@ -253,33 +281,6 @@ endfunction
 
 " Special file types
 au BufNewFile,BufRead *.geo setf c "Set c syntax for gmsh geo files
-
-" vim-latexsuite
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-"let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
-"let g:Tex_ViewRule_pdf = 'xpdf -remote 127.0.0.1'
-" Set the target format to pdf.
-let g:Tex_MultipleCompileFormats='div, pdf, ps'
-" Set the warning messages to ignore.
-let g:Tex_IgnoredWarnings =
-            \"Underfull\n".
-            \"Overfull\n".
-            \"specifier changed to\n".
-            \"You have requested\n".
-            \"Missing number, treated as zero.\n".
-            \"There were undefined references\n".
-            \"Citation %.%# undefined\n".
-            \'LaTeX Font Warning:'"
-" This number N says that latex-suite should ignore the first N of the above.
-let g:Tex_IgnoreLevel = 8
-let g:tex_indent_brace=0
-" TIP: if you write your \label's as \label{fig:something}, then if you
-" type in \ref{fig: and press Ctrl-N you will automatically cycle through
-" all the figure labels. Very useful!
-set iskeyword+=:
-
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
