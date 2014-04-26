@@ -1,8 +1,4 @@
 #
-PKGLIST="texlive vim-latexsuite exuberant-ctags"
-sudo apt-get install $PKGLIST
-sudo vim-addons -w install latex-suite
-
 cd ~/.vim
 ln -sf ~/.vim/vimrc ~/.vimrc
 ln -sf ~/.vim/gvimrc ~/.gvimrc
