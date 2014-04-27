@@ -1,52 +1,86 @@
 " Vundle and bundles configuration
 source $HOME/.vim/bundles.vim
 
-set nocp
-filetype indent plugin on     " required!
-
-"Omnicomplete
-if v:version >= 700
-    set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
-
-    let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
-    let OmniCpp_DisplayMode         = 1
-    let OmniCpp_GlobalScopeSearch   = 1
-    let OmniCpp_MayCompleteArrow    = 1 " autocomplete after ->
-    let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
-    let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
-    let OmniCpp_NamespaceSearch     = 1
-    let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
-    let OmniCpp_ShowAccess          = 1 "show access in pop-up
-    let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
-    let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
-
-    " automatically open and close the popup menu / preview window
-    au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-    set completeopt=menuone,menu,longest,preview
-    "set completeopt=menuone,menu,longest
-
-    " Modify colors
-    "highlight   clear
-    "highlight   Pmenu         ctermfg=0 ctermbg=2
-    "highlight   PmenuSel      ctermfg=0 ctermbg=7
-    "highlight   PmenuSbar     ctermfg=7 ctermbg=0
-    "highlight   PmenuThumb    ctermfg=0 ctermbg=7
-endif
-
-" ctags build map
-function! UpdateTags()
-    execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f proj.tags ./"
-    echohl StatusLine | echo "C/C++ tag updated" | echohl None
-endfunction
-nnoremap <C-F12> :call UpdateTags() <CR>
-
-" ctags files from system
-set tags+=~/.vim/tags/cpp.tags
-
 syntax on
 syntax spell toplevel
 
 set history=200
+
+set nocp
+filetype indent plugin on     " required!
+"
+" vim-latexsuite
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Tex_UseMakefile=1
+let g:Tex_DefaultTargetFormat='pdf'
+"let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
+"let g:Tex_ViewRule_pdf = 'xpdf -remote 127.0.0.1'
+" Set the target format to pdf.
+let g:Tex_MultipleCompileFormats='pdf,div,ps'
+" Set the warning messages to ignore.
+let g:Tex_IgnoredWarnings =
+            \"Underfull\n".
+            \"Overfull\n".
+            \"specifier changed to\n".
+            \"You have requested\n".
+            \"Missing number, treated as zero.\n".
+            \"There were undefined references\n".
+            \"Citation %.%# undefined\n".
+            \'LaTeX Font Warning:'"
+" This number N says that latex-suite should ignore the first N of the above.
+let g:Tex_IgnoreLevel  = 8
+let g:tex_indent_brace = 0
+let g:Tex_GotoError    = 0
+let g:Tex_GotoError    = 0 " Does not work because of quickfix
+" TIP: if you write your \label's as \label{fig:something}, then if you
+" type in \ref{fig: and press Ctrl-N you will automatically cycle through
+" all the figure labels. Very useful!
+set iskeyword+=:
+
+
+
+"Omnicomplete
+let use_omnicomplete = 0
+if use_omnicomplete
+    if v:version >= 700
+        set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
+
+        let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
+        let OmniCpp_DisplayMode         = 1
+        let OmniCpp_GlobalScopeSearch   = 1
+        let OmniCpp_MayCompleteArrow    = 1 " autocomplete after ->
+        let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
+        let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
+        let OmniCpp_NamespaceSearch     = 1
+        let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+        let OmniCpp_ShowAccess          = 1 "show access in pop-up
+        let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
+        let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
+
+        " automatically open and close the popup menu / preview window
+        au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+        set completeopt=menuone,menu,longest,preview
+        "set completeopt=menuone,menu,longest
+
+        " Modify colors
+        "highlight   clear
+        "highlight   Pmenu         ctermfg=0 ctermbg=2
+        "highlight   PmenuSel      ctermfg=0 ctermbg=7
+        "highlight   PmenuSbar     ctermfg=7 ctermbg=0
+        "highlight   PmenuThumb    ctermfg=0 ctermbg=7
+    endif
+
+    " ctags build map
+    function! UpdateTags()
+        execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f proj.tags ./"
+        echohl StatusLine | echo "C/C++ tag updated" | echohl None
+    endfunction
+    nnoremap <C-F12> :call UpdateTags() <CR>
+
+    " ctags files from system
+    set tags+=~/.vim/tags/cpp.tags
+endif
 
 " Map leader key
 let mapleader = ","
@@ -253,33 +287,6 @@ endfunction
 
 " Special file types
 au BufNewFile,BufRead *.geo setf c "Set c syntax for gmsh geo files
-
-" vim-latexsuite
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-"let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
-"let g:Tex_ViewRule_pdf = 'xpdf -remote 127.0.0.1'
-" Set the target format to pdf.
-let g:Tex_MultipleCompileFormats='div, pdf, ps'
-" Set the warning messages to ignore.
-let g:Tex_IgnoredWarnings =
-            \"Underfull\n".
-            \"Overfull\n".
-            \"specifier changed to\n".
-            \"You have requested\n".
-            \"Missing number, treated as zero.\n".
-            \"There were undefined references\n".
-            \"Citation %.%# undefined\n".
-            \'LaTeX Font Warning:'"
-" This number N says that latex-suite should ignore the first N of the above.
-let g:Tex_IgnoreLevel = 8
-let g:tex_indent_brace=0
-" TIP: if you write your \label's as \label{fig:something}, then if you
-" type in \ref{fig: and press Ctrl-N you will automatically cycle through
-" all the figure labels. Very useful!
-set iskeyword+=:
-
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")

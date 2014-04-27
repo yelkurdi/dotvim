@@ -26,6 +26,7 @@ Bundle 'scrooloose/nerdtree.git'
 "Bundle 'tpope/vim-dispatch.git'
 "Bundle 'Valloric/YouCompleteMe.git'
 Bundle 'msanders/snipmate.vim.git'
+"Bundle 'garbas/vim-snipmate.git'
 Bundle 'ervandew/supertab.git'
 Bundle 'vim-scripts/taglist.vim.git'
 "Bundle 'scrooloose/syntastic.git'
@@ -46,6 +47,8 @@ Bundle 'vim-scripts/OmniCppComplete.git'
 "Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...
 Bundle 'xuhdev/SingleCompile.git'
+"Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git'
+Bundle 'jcf/vim-latex.git'
 
 filetype on
 filetype indent plugin on     " required!
