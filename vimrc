@@ -16,7 +16,7 @@ let g:Tex_DefaultTargetFormat='pdf'
 "let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
 "let g:Tex_ViewRule_pdf = 'xpdf -remote 127.0.0.1'
 " Set the target format to pdf.
-let g:Tex_MultipleCompileFormats='div, pdf, ps'
+let g:Tex_MultipleCompileFormats='pdf,div,ps'
 " Set the warning messages to ignore.
 let g:Tex_IgnoredWarnings =
             \"Underfull\n".
@@ -28,8 +28,10 @@ let g:Tex_IgnoredWarnings =
             \"Citation %.%# undefined\n".
             \'LaTeX Font Warning:'"
 " This number N says that latex-suite should ignore the first N of the above.
-let g:Tex_IgnoreLevel = 8
-let g:tex_indent_brace=0
+let g:Tex_IgnoreLevel  = 8
+let g:tex_indent_brace = 0
+let g:Tex_GotoError    = 0
+let g:Tex_GotoError    = 0 " Does not work because of quickfix
 " TIP: if you write your \label's as \label{fig:something}, then if you
 " type in \ref{fig: and press Ctrl-N you will automatically cycle through
 " all the figure labels. Very useful!
@@ -38,7 +40,7 @@ set iskeyword+=:
 
 
 "Omnicomplete
-let use_omnicomplete = 1
+let use_omnicomplete = 0
 if use_omnicomplete
     if v:version >= 700
         set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
