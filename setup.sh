@@ -3,7 +3,7 @@ cd ~/.vim
 ln -sf ~/.vim/vimrc ~/.vimrc
 ln -sf ~/.vim/gvimrc ~/.gvimrc
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim -u ~/.vim/bundles.vim +BundleInstall +q
+vim -u ~/.vim/bundles.vim +PluginInstall +q +q
 
 # for vim-latex to work
 #ln -fs /home/yelkurdi/.vim/bundle/vim-latex/compiler compiler
