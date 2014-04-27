@@ -12,6 +12,7 @@ filetype indent plugin on     " required!
 " vim-latexsuite
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
+let g:Tex_UseMakefile=1
 let g:Tex_DefaultTargetFormat='pdf'
 "let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
 "let g:Tex_ViewRule_pdf = 'xpdf -remote 127.0.0.1'
