@@ -1,4 +1,8 @@
 #
+echo "Executing setup"
+CWD_MYVAR=$(pwd)
+echo "PWD: " ${CWD_MYVAR}
+set -o verbose
 cd ~/.vim
 ln -sf ~/.vim/vimrc ~/.vimrc
 ln -sf ~/.vim/gvimrc ~/.gvimrc
@@ -11,4 +15,4 @@ cd ~/.vim/tags/
 tar xjf cpp_src.tar.bz2
 ./runCtags.sh
 rm -rf cpp_src
-cd ..
+cd $CWD_MYVAR
