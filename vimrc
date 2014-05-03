@@ -159,6 +159,12 @@ set hlsearch
 set incsearch
 set wrapscan  " searches wrap bottom to top of file
 
+" Dictionary
+set dictionary+=/usr/share/dict/words
+
+" Thesaurus
+set thesaurus+=~/.vim/thesaurus/mthesaur.txt
+
 " Spelling
 set spellfile=~/.vim/dict.add
 au BufNewFile,BufRead,BufEnter *.tex setlocal spell spelllang=en_us
