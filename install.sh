@@ -1,4 +1,4 @@
 #
 PKGLIST="exuberant-ctags"
-sudo apt-get install $PKGLIST
+sudo apt-get -y install $PKGLIST
 ~/.vim/setup.sh
