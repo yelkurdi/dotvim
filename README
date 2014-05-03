@@ -6,8 +6,8 @@ Installation:
   1-  Clone the configurations:
     $> git clone https://github.com/yelkurdi/dotvim.git ~/.vim
 
-  *-  Execute install.sh, or run the following commands:
-
+  *-  Do steps starting 2, or execute install.sh.
+        WARNING: if you chose to execute install.sh, make sure to save any previous ~/.vimrc and ~/.gvimrc if you have any.  install.sh will overide these files.
 
   2- Create symbolic links (Not needed for Ubuntu/Linux):
     $> ln -sf ~/.vim/vimrc ~/.vimrc
