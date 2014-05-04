@@ -128,10 +128,11 @@ set ignorecase smartcase
 " set noignorecase infercase
 
 " Thesaurus
-" path to the moby thesaurus
-"set thesaurus+=/home/yelkurdi/.vim/thesaurus/mthesaurus.nix
 " moby uses phrases witch contain spaces so account for them
-"set iskeyword+=32-127,^,
+" set thesaurus+=~/.vim/thesaurus/mthesaur.nix
+" Online Thesaurus
+let g:online_thesaurus_map_keys = 0
+nnoremap <leader>tt :OnlineThesaurusCurrentWord<CR>
 
 " Persistent yank
 xnoremap p pgvy
@@ -161,9 +162,6 @@ set wrapscan  " searches wrap bottom to top of file
 
 " Dictionary
 set dictionary+=/usr/share/dict/words
-
-" Thesaurus
-set thesaurus+=~/.vim/thesaurus/mthesaur.txt
 
 " Spelling
 set spellfile=~/.vim/dict.add
