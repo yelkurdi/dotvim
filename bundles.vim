@@ -51,6 +51,7 @@ Bundle 'xuhdev/SingleCompile.git'
 Bundle 'jcf/vim-latex.git'
 Bundle 'nelstrom/vim-qargs.git'
 Bundle 'beloglazov/vim-online-thesaurus.git'
+Bundle 'tpope/vim-commentary.git'
 
 filetype on
 filetype indent plugin on     " required!
