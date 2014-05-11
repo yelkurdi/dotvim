@@ -109,10 +109,6 @@ set bg=light
 " scrolloff
 set so=5
 
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-set list
-
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
@@ -151,9 +147,12 @@ set autoindent    " turns it on
 set smartindent   " does the right thing (mostly) in programs
 
 " Text wrapping
-set wrap
-set showbreak=\ \ 
 "set linebreak nolist " break lines cleanly at word boundaries
+set wrap
+set linebreak
+set nolist
+"set showbreak= \ \ 
+set showbreak=…
 
 " Searching
 set hlsearch
@@ -214,7 +213,16 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 " Key mapings
 " Indent all
 " Exit insert mode
-:imap jj <Esc>
+"vmap <D-j> gj
+"vmap <D-k> gk
+"vmap <D-4> g$
+"vmap <D-6> g^
+"vmap <D-0> g^
+"nmap <D-j> gj
+"nmap <D-k> gk
+"nmap <D-4> g$
+"nmap <D-6> g^
+"nmap <D-0> g^
 map <F2> mzgg=G`z<CR>
 " Inserting a line above in normal mode
 map <S-Enter> O<Esc>
