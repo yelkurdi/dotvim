@@ -120,7 +120,9 @@ highlight SpecialKey guifg=#4a4a59
 set wildmode=longest,list " This would emulate the typical shell completion
 
 " case setupe
-set ignorecase smartcase
+set ignorecase
+set smartcase
+set infercase
 " set noignorecase infercase
 
 " Thesaurus
