@@ -52,6 +52,10 @@ Bundle 'jcf/vim-latex.git'
 Bundle 'nelstrom/vim-qargs.git'
 Bundle 'beloglazov/vim-online-thesaurus.git'
 Bundle 'tpope/vim-commentary.git'
+Bundle 'kana/vim-textobj-user'
+Bundle 'beloglazov/vim-textobj-quotes'
+"Bundle 'gibiansky/vim-latex-objects'
+Bundle 'rbonvall/vim-textobj-latex'
 
 filetype on
 filetype indent plugin on     " required!
