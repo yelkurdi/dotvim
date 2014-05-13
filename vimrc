@@ -202,6 +202,7 @@ vnoremap <Space> za
 nnoremap zO zCzO
 "Modify default fold for gitcommit
 autocmd Syntax gitcommit normal zR
+autocmd FileType gitcommit set spell spelllang=en
 
 function! s:insert_gates()
     let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
