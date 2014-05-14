@@ -38,6 +38,8 @@ let g:Tex_GotoError    = 0 " Does not work because of quickfix
 " all the figure labels. Very useful!
 set iskeyword+=:
 
+" autocomple pop
+let g:acp_behaviorKeywordLength = 4
 
 
 "Omnicomplete
