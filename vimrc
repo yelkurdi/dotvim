@@ -39,7 +39,7 @@ let g:Tex_GotoError    = 0 " Does not work because of quickfix
 set iskeyword+=:
 
 " autocomple pop
-let g:acp_behaviorKeywordLength = 4
+let g:acp_behaviorKeywordLength = 5
 
 
 "Omnicomplete
