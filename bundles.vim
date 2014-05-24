@@ -58,6 +58,7 @@ Bundle 'beloglazov/vim-textobj-quotes'
 Bundle 'rbonvall/vim-textobj-latex'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'vim-scripts/AutoComplPop.git'
+Bundle 'szw/vim-tags.git'
 
 filetype on
 filetype indent plugin on     " required!

@@ -43,7 +43,7 @@ let g:acp_behaviorKeywordLength = 5
 
 
 "Omnicomplete
-let use_omnicomplete = 0
+let use_omnicomplete = 1
 if use_omnicomplete
     if v:version >= 700
         set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
@@ -75,7 +75,7 @@ if use_omnicomplete
 
     " ctags build map
     function! UpdateTags()
-        execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f proj.tags ./"
+        execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
         echohl StatusLine | echo "C/C++ tag updated" | echohl None
     endfunction
     nnoremap <C-F12> :call UpdateTags() <CR>
@@ -136,10 +136,6 @@ nnoremap <leader>tt :OnlineThesaurusCurrentWord<CR>
 
 " Persistent yank
 xnoremap p pgvy
-
-" Tabs
-map :tn :tabnext
-map :tp :tabprevious
 
 " Indentation 
 set ts=4
