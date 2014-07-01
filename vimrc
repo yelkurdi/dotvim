@@ -8,7 +8,10 @@ set history=200
 
 set nocp
 filetype indent plugin on     " required!
-"
+
+" Set gnuplot filetype
+autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
+
 " vim-latexsuite
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
