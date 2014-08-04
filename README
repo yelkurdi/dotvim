@@ -27,11 +27,4 @@ Installation:
      $> ./runCtags.sh
      $> rm -rf cpp_src
 
-Install of sublimentary software
-
-  1- vim-latexsuite on Ubuntu from command line as follows:
-  $> sudo apt-get install vim-latexsuite
-  $> sudo vim-addons -w install latex-suite
-
-
 
