@@ -94,8 +94,8 @@ let mapleader = ","
 noremap \ ,
 
 " Map compile keys
-" nmap <F9> :SCCompile<cr>
-" nmap <F10> :SCCompileRun<cr>
+autocmd FileType c,cpp nmap <F9> :SCCompile<cr>
+autocmd FileType c,cpp nmap <F10> :SCCompileRun<cr>
 
 "Supertab
 let g:SuperTabDefaultCompletionType = 'context'
