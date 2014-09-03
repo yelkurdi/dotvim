@@ -60,6 +60,7 @@ Bundle 'rbonvall/vim-textobj-latex'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'vim-scripts/AutoComplPop.git'
 "Bundle 'szw/vim-tags.git'
+Bundle 'vim-scripts/Vim-R-plugin.git'
 
 filetype on
 filetype indent plugin on     " required!
