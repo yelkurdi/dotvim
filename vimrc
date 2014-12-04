@@ -45,6 +45,7 @@ set iskeyword+=:
 let g:acp_behaviorKeywordLength = 5
 
 
+let g:EclimCompletionMethod = 'omnifunc'
 "Omnicomplete
 let use_omnicomplete = 1
 if use_omnicomplete
