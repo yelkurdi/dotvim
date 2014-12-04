@@ -77,16 +77,15 @@ if use_omnicomplete
     endif
 
     " ctags build map
-    function! UpdateTags()
-        execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f .tags *"
-        echohl StatusLine | echo "C/C++ tag updated" | echohl None
-    endfunction
-    nnoremap <C-F12> :call UpdateTags() <CR>
+    " function! UpdateTags()
+    "     execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f .tags *"
+    "     echohl StatusLine | echo "C/C++ tag updated" | echohl None
+    " endfunction
+    " nnoremap <C-F12> :call UpdateTags() <CR>
 
     " ctags files from system
-    set tags+=~/.vim/tags/cpp.tags
-    " set tags+=./.tags,.tags
-    set tags+=.tags;
+    " set tags+=~/.vim/tags/cpp.tags
+    " set tags+=.tags;
 endif
 
 " Map leader key
