@@ -44,7 +44,16 @@ set iskeyword+=:
 " autocomple pop
 let g:acp_behaviorKeywordLength = 5
 
+" astyle
+if !exists("g:formatprg_c") | let g:formatprg_c = "astyle" | endif
+if !exists("g:formatprg_args_expr_c") && !exists("g:formatprg_args_c")
+    let g:formatprg_args_expr_c = '"--mode=c -pcH --style=allman"'
+endif
 
+if !exists("g:formatprg_cpp") | let g:formatprg_cpp = "astyle" | endif
+if !exists("g:formatprg_args_expr_cpp")  && !exists("g:formatprg_args_cpp")
+    let g:formatprg_args_expr_cpp = '"--mode=c -pcH --style=allman"'
+endif
 let g:EclimCompletionMethod = 'omnifunc'
 "Omnicomplete
 let use_omnicomplete = 1
