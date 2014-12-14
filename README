@@ -4,27 +4,18 @@ Suggested reference: http://vimcasts.org/episodes/synchronizing-plugins-with-git
 
 Installation:
   1-  Clone the configurations:
-    $> git clone https://github.com/yelkurdi/dotvim.git ~/.vim
+    $> cd ~
+    $> git clone https://github.com/yelkurdi/dotvim.git 
 
   *-  Do steps starting 2, or execute install.sh.
-        WARNING: if you chose to execute install.sh, make sure to save any previous ~/.vimrc and ~/.gvimrc if you have any.  install.sh will overide these files.
+        WARNING: if you chose to execute install.sh, make sure to save any previous ~/.vimrc and ~/.gvimrc if you had any.  install.sh will overide these files.
 
   2- Create symbolic links (Not needed for Ubuntu/Linux):
-    $> ln -sf ~/.vim/vimrc ~/.vimrc
-    $> ln -sf ~/.vim/gvimrc ~/.gvimrc
+    $> ln -sf ~/dotvim/vimrc ~/.vimrc
+    $> ln -sf ~/dotvim/gvimrc ~/.gvimrc
 
   3-  Install configured bundles:
-    $> git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    $> git clone https://github.com/gmarik/vundle.git ~/dotvim/bundle/vundle
     -  Execute for the first time only
-    $> vim -u ~/.vim/bundles.vim +BundleInstall +q
+    $> vim -u ~/dotvim/bundles.vim +BundleInstall +q
     Update modules, Launch vim, run :BundleInstall 
-
-  4- ctags
-     $> sudo apt-get install exuberant-ctags
-     - Create c/cpp tags 
-     $> cd ~/.vim/tags/
-     $> tar xjf cpp_src.tar.bz2
-     $> ./runCtags.sh
-     $> rm -rf cpp_src
-
-
