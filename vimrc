@@ -44,7 +44,17 @@ set iskeyword+=:
 " autocomple pop
 let g:acp_behaviorKeywordLength = 5
 
+" astyle
+if !exists("g:formatprg_c") | let g:formatprg_c = "astyle" | endif
+if !exists("g:formatprg_args_expr_c") && !exists("g:formatprg_args_c")
+    let g:formatprg_args_expr_c = '"--mode=c -pcHxC80 --style=allman"'
+endif
 
+if !exists("g:formatprg_cpp") | let g:formatprg_cpp = "astyle" | endif
+if !exists("g:formatprg_args_expr_cpp")  && !exists("g:formatprg_args_cpp")
+    let g:formatprg_args_expr_cpp = '"--mode=c -pcHxC80 --style=allman"'
+endif
+let g:EclimCompletionMethod = 'omnifunc'
 "Omnicomplete
 let use_omnicomplete = 1
 if use_omnicomplete
@@ -77,16 +87,15 @@ if use_omnicomplete
     endif
 
     " ctags build map
-    function! UpdateTags()
-        execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f .tags *"
-        echohl StatusLine | echo "C/C++ tag updated" | echohl None
-    endfunction
-    nnoremap <C-F12> :call UpdateTags() <CR>
+    " function! UpdateTags()
+    "     execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f .tags *"
+    "     echohl StatusLine | echo "C/C++ tag updated" | echohl None
+    " endfunction
+    " nnoremap <C-F12> :call UpdateTags() <CR>
 
     " ctags files from system
-    set tags+=~/.vim/tags/cpp.tags
-    " set tags+=./.tags,.tags
-    set tags+=.tags;
+    " set tags+=~/.vim/tags/cpp.tags
+    " set tags+=.tags;
 endif
 
 " Map leader key
@@ -231,7 +240,9 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 "nmap <D-4> g$
 "nmap <D-6> g^
 "nmap <D-0> g^
-map <F2> mzgg=G`z<CR>
+" map <F2> mzgg=G`z<CR>
+noremap <F2> :Autoformat<CR><CR>
+
 " Inserting a line above in normal mode
 map <S-Enter> O<Esc>
 " For local variable renaming
