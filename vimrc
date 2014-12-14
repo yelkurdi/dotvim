@@ -1,5 +1,5 @@
 " Vundle and bundles configuration
-source $HOME/.vim/bundles.vim
+source ~/dotvim/bundles.vim
 
 syntax on
 syntax spell toplevel
@@ -92,10 +92,6 @@ if use_omnicomplete
     "     echohl StatusLine | echo "C/C++ tag updated" | echohl None
     " endfunction
     " nnoremap <C-F12> :call UpdateTags() <CR>
-
-    " ctags files from system
-    " set tags+=~/.vim/tags/cpp.tags
-    " set tags+=.tags;
 endif
 
 " Map leader key
@@ -114,9 +110,6 @@ let g:SuperTabDefaultCompletionType = 'context'
 "let g:syntastic_cpp_checkers=['gcc']
 "let g:syntastic_check_on_open=1
 "let g:syntastic_enable_signs=1
-
-" YCM configuration
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 
 " colorshemes
 colorscheme desert
@@ -143,7 +136,7 @@ set infercase
 
 " Thesaurus
 " moby uses phrases witch contain spaces so account for them
-" set thesaurus+=~/.vim/thesaurus/mthesaur.nix
+" set thesaurus+=~/dotvim/thesaurus/mthesaur.nix
 " Online Thesaurus
 let g:online_thesaurus_map_keys = 0
 nnoremap <leader>tt :OnlineThesaurusCurrentWord<CR>
@@ -177,7 +170,7 @@ set wrapscan  " searches wrap bottom to top of file
 set dictionary+=/usr/share/dict/words
 
 " Spelling
-set spellfile=~/.vim/dict.add
+set spellfile=~/dotvim/dict.add
 au BufNewFile,BufRead,BufEnter *.tex setlocal spell spelllang=en_us
 au BufNewFile,BufRead,BufEnter *.txt setlocal spell spelllang=en_us
 
