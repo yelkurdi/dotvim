@@ -11,6 +11,7 @@ Installation:
         WARNING: if you chose to execute install.sh, make sure to save any previous ~/.vimrc and ~/.gvimrc if you had any.  install.sh will overide these files.
 
   2- Create symbolic links (Not needed for Ubuntu/Linux):
+    $> ln -sf ~/dotvim ~/.vim
     $> ln -sf ~/dotvim/vimrc ~/.vimrc
     $> ln -sf ~/dotvim/gvimrc ~/.gvimrc
 
