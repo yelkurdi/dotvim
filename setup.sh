@@ -5,6 +5,7 @@ echo "PWD: " ${CWD_MYVAR}
 set -o verbose
 VIMDIR=~/dotvim
 cd ${VIMDIR} 
+ln -sf ${VIMDIR} ~/.vim
 ln -sf ${VIMDIR}/vimrc ~/.vimrc
 ln -sf ${VIMDIR}/gvimrc ~/.gvimrc
 git clone https://github.com/gmarik/vundle.git ${VIMDIR}/bundle/vundle
