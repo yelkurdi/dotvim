@@ -15,8 +15,11 @@ autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
 " Snips UltiSnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-g>"
+let g:UltiSnipsJumpForwardTrigger="<c-g>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "myUltiSnippets"]
+let g:snips_author="Yousef El-Kurdi"
+let g:snips_instit="McGill University"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
