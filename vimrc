@@ -154,7 +154,7 @@ let g:online_thesaurus_map_keys = 0
 nnoremap <leader>tt :OnlineThesaurusCurrentWord<CR>
 
 " Persistent yank
-xnoremap p pgvy
+vnoremap p pgvy
 
 " Indentation 
 set ts=4
