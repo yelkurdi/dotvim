@@ -12,6 +12,18 @@ filetype indent plugin on     " required!
 " Set gnuplot filetype
 autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
 
+" Snips UltiSnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-g>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "myUltiSnippets"]
+let g:snips_author="Yousef El-Kurdi"
+let g:snips_instit="McGill University"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " vim-latexsuite
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
@@ -142,7 +154,7 @@ let g:online_thesaurus_map_keys = 0
 nnoremap <leader>tt :OnlineThesaurusCurrentWord<CR>
 
 " Persistent yank
-xnoremap p pgvy
+vnoremap p pgvy
 
 " Indentation 
 set ts=4
@@ -194,11 +206,15 @@ au BufWinEnter *.{c,cc,cpp,h,hpp} let w:longlinehl = matchadd('ErrorMsg', '.\%>8
 " Add line numbers per line
 set number
 
+" Matching characters
 " Closing braces
-"inoremap {      {}<Left>
-"inoremap {<CR>  {<CR>}<Esc>O
-"inoremap {{     {
-"inoremap {}     {}
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+inoremap        (  ()<Left>
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
 
 " Folding
 set foldmethod=syntax
