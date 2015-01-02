@@ -59,12 +59,12 @@ let g:acp_behaviorKeywordLength = 5
 " astyle
 if !exists("g:formatprg_c") | let g:formatprg_c = "astyle" | endif
 if !exists("g:formatprg_args_expr_c") && !exists("g:formatprg_args_c")
-    let g:formatprg_args_expr_c = '"--style=allman --mode=c --pad-oper --convert-tabs --indent=spaces=4 --pad-header --max-code-length=80 --align-pointer=type --lineend=linux --delete-empty-lines --suffix=none"'
+    let g:formatprg_args_expr_c = '"--style=allman --mode=c --pad-oper --convert-tabs --indent=spaces=4 --pad-header --max-code-length=80 --align-pointer=type --lineend=linux --suffix=none"'
 endif
 
 if !exists("g:formatprg_cpp") | let g:formatprg_cpp = "astyle" | endif
 if !exists("g:formatprg_args_expr_cpp")  && !exists("g:formatprg_args_cpp")
-    let g:formatprg_args_expr_cpp = '"--style=allman --mode=c --pad-oper --convert-tabs --indent=spaces=4 --pad-header --max-code-length=80 --align-pointer=type --lineend=linux --delete-empty-lines --suffix=none"'
+    let g:formatprg_args_expr_cpp = '"--style=allman --mode=c --pad-oper --convert-tabs --indent=spaces=4 --pad-header --max-code-length=80 --align-pointer=type --lineend=linux --suffix=none"'
 endif
 let g:EclimCompletionMethod = 'omnifunc'
 "Omnicomplete
