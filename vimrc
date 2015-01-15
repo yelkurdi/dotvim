@@ -369,7 +369,6 @@ endfunction
 
 " fugitive
 autocmd BufReadPost fugitive://* set bufhidden=delete " delete old fugitive buffers
-set diffopt+=vertical
 
 " Tabularize mappings
 let mapleader=','
