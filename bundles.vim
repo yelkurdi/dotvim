@@ -1,4 +1,4 @@
-" Vundle settings start
+"while  Vundle settings start
 "*****************************
 set nocompatible              " be iMproved
 filetype off                  " required!
@@ -67,6 +67,8 @@ Bundle 'vim-scripts/AutoComplPop.git'
 Bundle 'vim-scripts/Vim-R-plugin.git'
 Bundle 'Chiel92/vim-autoformat'
 Bundle 'bling/vim-airline.git'
+Bundle 'klen/python-mode'
+" Bundle 'davidhalter/jedi-vim.git'
 
 filetype on
 filetype indent plugin on     " required!
