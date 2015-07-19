@@ -124,8 +124,12 @@ let g:SuperTabDefaultCompletionType = 'context'
 "let g:syntastic_enable_signs=1
 
 " colorshemes
-colorscheme desert
-set bg=light
+" colorscheme desert
+colorscheme wasabi256
+" colorscheme wombat256mod
+" colorscheme wombat256
+set bg=dark
+
 
 " scrolloff
 set so=5

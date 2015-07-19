@@ -14,7 +14,6 @@ Bundle 'gmarik/vundle'
 "
 " original repos on GitHub
 Bundle 'tpope/vim-fugitive'
-Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'nelstrom/vim-visual-star-search.git'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'tpope/vim-repeat.git'
@@ -69,6 +68,11 @@ Bundle 'vim-scripts/Vim-R-plugin.git'
 Bundle 'bling/vim-airline.git'
 Bundle 'klen/python-mode'
 " Bundle 'davidhalter/jedi-vim.git'
+
+
+" Color schemes
+Bundle 'thomd/vim-wasabi-colorscheme.git'
+Bundle 'altercation/vim-colors-solarized.git'
 
 filetype on
 filetype indent plugin on     " required!
