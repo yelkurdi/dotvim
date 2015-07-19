@@ -124,8 +124,11 @@ let g:SuperTabDefaultCompletionType = 'context'
 "let g:syntastic_enable_signs=1
 
 " colorshemes
-colorscheme desert
-set bg=light
+" colorscheme desert
+colorscheme wasabi256
+" colorscheme wombat256mod
+" colorscheme wombat256
+set bg=dark
 
 " scrolloff
 set so=5
@@ -354,6 +357,10 @@ endif
 "autocmd BufNewFile,BufRead *.param set filetype=octave
 "autocmd BufNewFile,BufRead *.m set filetype=octave
 autocmd BufNewFile,BufRead *.param set filetype=matlab
+
+
+" Tag files treated as html files
+autocmd BufNewFile,BufRead *.tag set filetype=html
 
 nnoremap <silent> <F3> :call <SID>StripTrailingWhitespaces()<CR>
 function! <SID>StripTrailingWhitespaces()
