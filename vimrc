@@ -358,9 +358,11 @@ endif
 "autocmd BufNewFile,BufRead *.m set filetype=octave
 autocmd BufNewFile,BufRead *.param set filetype=matlab
 
-
-" Tag files treated as html files
+" Set .tag files to html filetypes
 autocmd BufNewFile,BufRead *.tag set filetype=html
+
+" Set md file types
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 nnoremap <silent> <F3> :call <SID>StripTrailingWhitespaces()<CR>
 function! <SID>StripTrailingWhitespaces()
