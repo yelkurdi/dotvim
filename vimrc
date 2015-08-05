@@ -12,6 +12,11 @@ filetype indent plugin on     " required!
 " Set gnuplot filetype
 autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
 
+" Directory setup
+set backupdir=~/dotvim/backup_files//
+set directory=~/dotvim/swap_files//
+" set undodir=~/dotvim/undo_files//
+
 " Snips UltiSnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-s>"

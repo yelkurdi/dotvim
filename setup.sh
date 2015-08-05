@@ -11,6 +11,8 @@ ln -sf ${VIMDIR}/gvimrc ~/.gvimrc
 git clone https://github.com/gmarik/vundle.git ${VIMDIR}/bundle/vundle
 vim -u ${VIMDIR}/bundles.vim +PluginInstall +PluginClean! +q +q
 
+mkdir -p ~/dotvim/{backup_files,swap_files,undo_files}
+
 # for vim-latex to work
 #ln -fs /home/yelkurdi/.vim/bundle/vim-latex/compiler compiler
 
