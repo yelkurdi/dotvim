@@ -261,6 +261,7 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 "nmap <D-0> g^
 " map <F2> mzgg=G`z<CR>
 noremap <F2> :Autoformat<CR><CR>
+vmap <space> <C-w>
 
 " Inserting a line above in normal mode
 map <S-Enter> O<Esc>
