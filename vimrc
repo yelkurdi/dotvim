@@ -12,6 +12,9 @@ filetype indent plugin on     " required!
 " Set gnuplot filetype
 autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
 
+" Exclude paths in file name completeion
+set wildignore+=/nls/p/*/
+
 " Directory setup
 set backupdir=~/dotvim/backup_files//
 set directory=~/dotvim/swap_files//
