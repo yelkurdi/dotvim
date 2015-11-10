@@ -169,8 +169,8 @@ nnoremap <leader>tt :OnlineThesaurusCurrentWord<CR>
 vnoremap p pgvy
 
 " Indentation 
-set ts=4
-set sw=4
+set ts=2
+set sw=2
 set sts=4
 set expandtab     " conversion of actual tab character (ctrl-v) to spaces
 set smarttab
