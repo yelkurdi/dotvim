@@ -13,12 +13,16 @@ filetype indent plugin on     " required!
 autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
 
 " Exclude paths in file name completeion
-set wildignore+=/nls/p/*/
+" set wildignore+=/nls/p/*/
 
 " Directory setup
 set backupdir=~/dotvim/backup_files//
 set directory=~/dotvim/swap_files//
 " set undodir=~/dotvim/undo_files//
+
+" Adjust comment style
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+autocmd FileType matlab setlocal commentstring=%\ %s
 
 " Snips UltiSnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -117,6 +121,9 @@ endif
 " Map leader key
 let mapleader = ","
 noremap \ ,
+
+" Map star key
+nnoremap * *``
 
 " Map compile keys
 autocmd FileType c,cpp nmap <F9> :SCCompile -o %<.out<cr>
