@@ -6,6 +6,10 @@ syntax spell toplevel
 
 set history=200
 
+" Clipboard
+vnoremap <C-c> "*y
+vnoremap <C-c> "+y
+
 set nocp
 filetype indent plugin on     " required!
 
