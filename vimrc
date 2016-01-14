@@ -23,6 +23,7 @@ set directory=~/dotvim/swap_files//
 " Adjust comment style
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
+autocmd FileType c,cpp,cs,java setlocal noexpandtab
 
 " Snips UltiSnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -31,7 +32,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-g>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "myUltiSnippets"]
 let g:snips_author="Yousef El-Kurdi"
-let g:snips_instit="McGill University"
+let g:snips_instit="IBM Research"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -123,7 +124,7 @@ let mapleader = ","
 noremap \ ,
 
 " Map star key
-nnoremap * *``
+noremap * *``
 
 " Map compile keys
 autocmd FileType c,cpp nmap <F9> :SCCompile -o %<.out<cr>
@@ -227,14 +228,14 @@ set number
 
 " Matching characters
 " Closing braces
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-inoremap (      ()<Left>
-inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+" inoremap {      {}<Left>
+" inoremap {<CR>  {<CR>}<Esc>O
+" inoremap {{     {
+" inoremap {}     {}
+" inoremap (      ()<Left>
+" inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+" inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+" inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
 " Folding
 set foldmethod=syntax
@@ -255,6 +256,11 @@ function! s:insert_gates()
     normal! kk
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+
+" http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
 
 " Key mapings
 " Indent all
