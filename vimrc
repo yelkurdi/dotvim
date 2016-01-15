@@ -6,6 +6,13 @@ syntax spell toplevel
 
 set history=200
 
+" Map leader key
+let mapleader = ","
+noremap \ ,
+
+" Map star key
+noremap * *``
+
 " Clipboard
 vnoremap <C-c> "*y
 vnoremap <C-c> "+y
@@ -18,6 +25,8 @@ autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
 
 " Exclude paths in file name completeion
 " set wildignore+=/nls/p/*/
+inoremap <leader>fp <C-R>=expand("%:p:h")<CR>
+inoremap <leader>fn <C-R>=expand("%:p")<CR>
 
 " Directory setup
 set backupdir=~/dotvim/backup_files//
@@ -122,13 +131,6 @@ if use_omnicomplete
     " endfunction
     " nnoremap <C-F12> :call UpdateTags() <CR>
 endif
-
-" Map leader key
-let mapleader = ","
-noremap \ ,
-
-" Map star key
-noremap * *``
 
 " Map compile keys
 autocmd FileType c,cpp nmap <F9> :SCCompile -o %<.out<cr>
