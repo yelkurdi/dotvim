@@ -36,7 +36,7 @@ set directory=~/dotvim/swap_files//
 " Adjust comment style
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
-autocmd FileType c,cpp,cs,java setlocal noexpandtab
+autocmd FileType c,cpp,cs,java,perl setlocal noexpandtab
 
 " Snips UltiSnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -49,6 +49,14 @@ let g:snips_instit="IBM Research"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Notes file type
+au BufNewFile,BufRead *.notes set filetype=notes
+
+" Syntax ranges for notes filetypes
+au FileType notes,text call SyntaxRange#Include('<sh>', '</sh>', 'sh', 'NonText')
+au FileType notes,text call SyntaxRange#Include('<c>', '</c>', 'c', 'NonText')
+au FileType notes,text call SyntaxRange#Include('<cpp>', '</cpp>', 'cpp', 'NonText')
 
 " vim-latexsuite
 set grepprg=grep\ -nH\ $*
@@ -132,6 +140,17 @@ if use_omnicomplete
     " nnoremap <C-F12> :call UpdateTags() <CR>
 endif
 
+" Rename current buffer
+function! RenameFile()
+let old_name = expand('%')
+let new_name = input('New file name: ', expand('%'), 'file')
+if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+endif
+endfunction
+map <leader>n :call RenameFile()<cr>
 " Map compile keys
 autocmd FileType c,cpp nmap <F9> :SCCompile -o %<.out<cr>
 autocmd FileType c,cpp nmap <F10> :SCCompileRun -o %<.out<cr>
@@ -183,7 +202,7 @@ nnoremap <leader>tt :OnlineThesaurusCurrentWord<CR>
 vnoremap p pgvy
 
 " Indentation 
-set ts=2
+set ts=4 " Activating this misses up indentation for some code files
 set sw=2
 set sts=4
 set expandtab     " conversion of actual tab character (ctrl-v) to spaces
