@@ -75,6 +75,8 @@ Bundle 'thomd/vim-wasabi-colorscheme.git'
 Bundle 'altercation/vim-colors-solarized.git'
 
 Bundle 'vim-scripts/SyntaxRange.git'
+Bundle 'vim-scripts/fontsize'
+
 
 filetype on
 filetype indent plugin on     " required!
