@@ -51,7 +51,7 @@ let g:snips_instit="IBM Research"
 let g:UltiSnipsEditSplit="vertical"
 
 " Notes file type
-au BufNewFile,BufRead *.notes set filetype=notes
+au BufNewFile,BufRead *.notes set filetype=text
 
 " Syntax ranges for notes filetypes
 au FileType notes,text call SyntaxRange#Include('<sh>', '</sh>', 'sh', 'NonText')
@@ -166,7 +166,8 @@ let g:SuperTabDefaultCompletionType = 'context'
 
 " colorshemes
 " colorscheme desert
-colorscheme wasabi256
+" colorscheme wasabi256
+colorscheme adaryn
 " colorscheme wombat256mod
 " colorscheme wombat256
 set bg=dark
