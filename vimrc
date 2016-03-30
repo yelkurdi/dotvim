@@ -51,12 +51,12 @@ let g:snips_instit="IBM Research"
 let g:UltiSnipsEditSplit="vertical"
 
 " Notes file type
-au BufNewFile,BufRead *.notes set filetype=text
+au BufNewFile,BufRead *.notes set filetype=conf
 
 " Syntax ranges for notes filetypes
-au FileType notes,text call SyntaxRange#Include('<sh>', '</sh>', 'sh', 'NonText')
-au FileType notes,text call SyntaxRange#Include('<c>', '</c>', 'c', 'NonText')
-au FileType notes,text call SyntaxRange#Include('<cpp>', '</cpp>', 'cpp', 'NonText')
+au FileType conf,text call SyntaxRange#Include('<sh>', '</sh>', 'sh', 'NonText')
+au FileType conf,text call SyntaxRange#Include('<c>', '</c>', 'c', 'NonText')
+au FileType conf,text call SyntaxRange#Include('<cpp>', '</cpp>', 'cpp', 'NonText')
 
 " vim-latexsuite
 set grepprg=grep\ -nH\ $*
@@ -340,6 +340,11 @@ set statusline+=\ %y\                                  "FileType
 set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
 set statusline+=\ col:%03c\                            "Colnr
 
+" check existence of file
+function LS() range
+  echo system('ls -lh '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'')
+endfunction
+
 function! HighlightSearch()
     if &hls
         return 'H'
@@ -374,6 +379,13 @@ function! CheckForCustomConfiguration()
         exe 'source' custom_config_file
     endif
 endfunction
+
+" vimdiff
+" ignore white spaces
+if &diff
+  " diff mode
+  set diffopt+=iwhite
+endif
 
 " Gui options for gvim
 " :set guioptions-=m  "remove menu bar
