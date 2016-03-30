@@ -6,15 +6,37 @@ syntax spell toplevel
 
 set history=200
 
+" Map leader key
+let mapleader = ","
+noremap \ ,
+
+" Map star key
+noremap * *``
+
+" Clipboard
+vnoremap <C-c> "*y
+vnoremap <C-c> "+y
+
 set nocp
 filetype indent plugin on     " required!
 
 " Set gnuplot filetype
 autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
 
-set backupdir=~/.vim/backup_files//
-set directory=~/.vim/swap_files//
-set undodir=~/.vim/undo_files//
+" Exclude paths in file name completeion
+" set wildignore+=/nls/p/*/
+inoremap <leader>fp <C-R>=expand("%:p:h")<CR>
+inoremap <leader>fn <C-R>=expand("%:p")<CR>
+
+" Directory setup
+set backupdir=~/dotvim/backup_files//
+set directory=~/dotvim/swap_files//
+" set undodir=~/dotvim/undo_files//
+
+" Adjust comment style
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+autocmd FileType matlab setlocal commentstring=%\ %s
+autocmd FileType c,cpp,cs,java,perl setlocal noexpandtab
 
 " Snips UltiSnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -23,10 +45,18 @@ let g:UltiSnipsJumpForwardTrigger="<c-g>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "myUltiSnippets"]
 let g:snips_author="Yousef El-Kurdi"
-let g:snips_instit="McGill University"
+let g:snips_instit="IBM Research"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Notes file type
+au BufNewFile,BufRead *.notes set filetype=conf
+
+" Syntax ranges for notes filetypes
+au FileType conf,text call SyntaxRange#Include('<sh>', '</sh>', 'sh', 'NonText')
+au FileType conf,text call SyntaxRange#Include('<c>', '</c>', 'c', 'NonText')
+au FileType conf,text call SyntaxRange#Include('<cpp>', '</cpp>', 'cpp', 'NonText')
 
 " vim-latexsuite
 set grepprg=grep\ -nH\ $*
@@ -110,10 +140,17 @@ if use_omnicomplete
     " nnoremap <C-F12> :call UpdateTags() <CR>
 endif
 
-" Map leader key
-let mapleader = ","
-noremap \ ,
-
+" Rename current buffer
+function! RenameFile()
+let old_name = expand('%')
+let new_name = input('New file name: ', expand('%'), 'file')
+if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+endif
+endfunction
+map <leader>n :call RenameFile()<cr>
 " Map compile keys
 autocmd FileType c,cpp nmap <F9> :SCCompile -o %<.out<cr>
 autocmd FileType c,cpp nmap <F10> :SCCompileRun -o %<.out<cr>
@@ -129,7 +166,8 @@ let g:SuperTabDefaultCompletionType = 'context'
 
 " colorshemes
 " colorscheme desert
-colorscheme wasabi256
+" colorscheme wasabi256
+colorscheme adaryn
 " colorscheme wombat256mod
 " colorscheme wombat256
 set bg=dark
@@ -164,8 +202,8 @@ nnoremap <leader>tt :OnlineThesaurusCurrentWord<CR>
 vnoremap p pgvy
 
 " Indentation 
-set ts=4
-set sw=4
+set ts=4 " Activating this misses up indentation for some code files
+set sw=2
 set sts=4
 set expandtab     " conversion of actual tab character (ctrl-v) to spaces
 set smarttab
@@ -215,14 +253,14 @@ set number
 
 " Matching characters
 " Closing braces
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-inoremap (      ()<Left>
-inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+" inoremap {      {}<Left>
+" inoremap {<CR>  {<CR>}<Esc>O
+" inoremap {{     {
+" inoremap {}     {}
+" inoremap (      ()<Left>
+" inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+" inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+" inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
 " Folding
 set foldmethod=syntax
@@ -244,6 +282,11 @@ function! s:insert_gates()
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
+" http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
+
 " Key mapings
 " Indent all
 " Exit insert mode
@@ -259,6 +302,7 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 "nmap <D-0> g^
 " map <F2> mzgg=G`z<CR>
 noremap <F2> :Autoformat<CR><CR>
+vmap <space> <C-w>
 
 " Inserting a line above in normal mode
 map <S-Enter> O<Esc>
@@ -295,6 +339,11 @@ set statusline+=\ %y\                                  "FileType
 set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
 set statusline+=\ col:%03c\                            "Colnr
 
+" check existence of file
+function LS() range
+  echo system('ls -lh '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'')
+endfunction
+
 function! HighlightSearch()
     if &hls
         return 'H'
@@ -329,6 +378,13 @@ function! CheckForCustomConfiguration()
         exe 'source' custom_config_file
     endif
 endfunction
+
+" vimdiff
+" ignore white spaces
+if &diff
+  " diff mode
+  set diffopt+=iwhite
+endif
 
 " Gui options for gvim
 " :set guioptions-=m  "remove menu bar
@@ -443,6 +499,7 @@ let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
 let g:pymode_lint_write = 1
+let g:pymode_lint_ignore="E703"
 
 " Support virtualenv
 let g:pymode_virtualenv = 1
