@@ -29,7 +29,7 @@ Bundle 'vim-scripts/gnuplot.vim.git'
 " Bundle 'MarcWeber/vim-addon-mw-utils.git' " Required by garbas/snipmate
 " Bundle 'garbas/vim-snipmate.git'
 " Bundle 'msanders/snipmate.vim.git'
-" Bundle 'SirVer/ultisnips'
+Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'ervandew/supertab.git'
 Bundle 'vim-scripts/taglist.vim.git'
@@ -69,7 +69,6 @@ Bundle 'bling/vim-airline.git'
 Bundle 'klen/python-mode'
 " Bundle 'davidhalter/jedi-vim.git'
 
-
 " Color schemes
 Bundle 'thomd/vim-wasabi-colorscheme.git'
 Bundle 'altercation/vim-colors-solarized.git'
@@ -78,7 +77,6 @@ Bundle 'vim-scripts/SyntaxRange.git'
 Bundle 'vim-scripts/fontsize'
 
 Bundle 'tfnico/vim-gradle.git'
-
 
 filetype on
 filetype indent plugin on     " required!
