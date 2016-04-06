@@ -29,9 +29,9 @@ inoremap <leader>fp <C-R>=expand("%:p:h")<CR>
 inoremap <leader>fn <C-R>=expand("%:p")<CR>
 
 " Directory setup
-set backupdir=~/dotvim/backup_files//
-set directory=~/dotvim/swap_files//
-" set undodir=~/dotvim/undo_files//
+set backupdir=~/dotvim/backup_files/
+set directory=~/dotvim/swap_files/
+" set undodir=~/dotvim/undo_files/
 
 " Adjust comment style
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
@@ -134,7 +134,7 @@ if use_omnicomplete
 
     " ctags build map
     " function! UpdateTags()
-    "     execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f .tags *"
+    " execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -f .tags *"
     "     echohl StatusLine | echo "C/C++ tag updated" | echohl None
     " endfunction
     " nnoremap <C-F12> :call UpdateTags() <CR>
