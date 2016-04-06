@@ -32,7 +32,7 @@ Bundle 'vim-scripts/gnuplot.vim.git'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'ervandew/supertab.git'
-Bundle 'vim-scripts/taglist.vim.git'
+" Bundle 'vim-scripts/taglist.vim.git'
 "Bundle 'scrooloose/syntastic.git'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
