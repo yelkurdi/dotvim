@@ -76,6 +76,8 @@ Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'vim-scripts/SyntaxRange.git'
 Bundle 'vim-scripts/fontsize'
 
+Bundle 'tfnico/vim-gradle.git'
+
 filetype on
 filetype indent plugin on     " required!
 "
