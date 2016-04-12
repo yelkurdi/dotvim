@@ -29,10 +29,10 @@ Bundle 'vim-scripts/gnuplot.vim.git'
 " Bundle 'MarcWeber/vim-addon-mw-utils.git' " Required by garbas/snipmate
 " Bundle 'garbas/vim-snipmate.git'
 " Bundle 'msanders/snipmate.vim.git'
-" Bundle 'SirVer/ultisnips'
+Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'ervandew/supertab.git'
-Bundle 'vim-scripts/taglist.vim.git'
+" Bundle 'vim-scripts/taglist.vim.git'
 "Bundle 'scrooloose/syntastic.git'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -51,14 +51,14 @@ Bundle 'vim-scripts/OmniCppComplete.git'
 "Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...
 Bundle 'xuhdev/SingleCompile.git'
-"Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git'
+Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git'
 " Bundle 'jcf/vim-latex.git'
 Bundle 'nelstrom/vim-qargs.git'
 Bundle 'beloglazov/vim-online-thesaurus.git'
 Bundle 'tpope/vim-commentary.git'
 Bundle 'kana/vim-textobj-user'
 Bundle 'beloglazov/vim-textobj-quotes'
-"Bundle 'gibiansky/vim-latex-objects'
+Bundle 'gibiansky/vim-latex-objects'
 " Bundle 'rbonvall/vim-textobj-latex'
 Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'vim-scripts/AutoComplPop.git'
@@ -69,7 +69,6 @@ Bundle 'bling/vim-airline.git'
 Bundle 'klen/python-mode'
 " Bundle 'davidhalter/jedi-vim.git'
 
-
 " Color schemes
 Bundle 'thomd/vim-wasabi-colorscheme.git'
 Bundle 'altercation/vim-colors-solarized.git'
@@ -77,6 +76,7 @@ Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'vim-scripts/SyntaxRange.git'
 Bundle 'vim-scripts/fontsize'
 
+Bundle 'tfnico/vim-gradle.git'
 
 filetype on
 filetype indent plugin on     " required!
