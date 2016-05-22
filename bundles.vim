@@ -78,6 +78,8 @@ Bundle 'vim-scripts/fontsize'
 
 Bundle 'tfnico/vim-gradle.git'
 
+Bundle 'jamessan/vim-gnupg.git'
+
 filetype on
 filetype indent plugin on     " required!
 "

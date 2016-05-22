@@ -499,7 +499,7 @@ let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
 let g:pymode_lint_write = 1
-let g:pymode_lint_ignore="E703"
+let g:pymode_lint_ignore="E703,E701,E129,E702"
 
 " Support virtualenv
 let g:pymode_virtualenv = 1
