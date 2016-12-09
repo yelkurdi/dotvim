@@ -18,6 +18,7 @@ Bundle 'nelstrom/vim-visual-star-search.git'
 Bundle 'tpope/vim-unimpaired.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'godlygeek/tabular.git'
+Bundle 'tpope/vim-markdown'
 " Bundle 'sjl/gundo.vim.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'scrooloose/nerdtree.git'
@@ -67,17 +68,16 @@ Bundle 'vim-scripts/Vim-R-plugin.git'
 " Bundle 'Chiel92/vim-autoformat'
 Bundle 'bling/vim-airline.git'
 Bundle 'klen/python-mode'
-" Bundle 'davidhalter/jedi-vim.git'
+Bundle 'davidhalter/jedi-vim.git'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'tpope/vim-jdaddy'
 
 " Color schemes
 Bundle 'thomd/vim-wasabi-colorscheme.git'
 Bundle 'altercation/vim-colors-solarized.git'
-
 Bundle 'vim-scripts/SyntaxRange.git'
 Bundle 'vim-scripts/fontsize'
-
 Bundle 'tfnico/vim-gradle.git'
-
 Bundle 'jamessan/vim-gnupg.git'
 
 filetype on

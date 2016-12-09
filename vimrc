@@ -20,6 +20,17 @@ vnoremap <C-c> "+y
 set nocp
 filetype indent plugin on     " required!
 
+" Split window
+set splitbelow
+set splitright
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
 " Set gnuplot filetype
 autocmd BufNewFile,BufRead *.gnu set filetype=gnuplot
 
@@ -114,7 +125,7 @@ if use_omnicomplete
         let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
         let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
         let OmniCpp_NamespaceSearch     = 1
-        let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+        " let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
         let OmniCpp_ShowAccess          = 1 "show access in pop-up
         let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
         let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
@@ -184,6 +195,12 @@ highlight SpecialKey guifg=#4a4a59
 
 " cmdline-completion
 set wildmode=longest,list " This would emulate the typical shell completion
+
+
+" Powerline setup
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
+
 
 " case setupe
 set ignorecase
@@ -262,6 +279,21 @@ set number
 " inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 " inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
+
+
+" automatically change window's cwd to file's dir
+set autochdir
+
+" I'm prefer spaces to tabs
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" more subtle popup colors
+if has ('gui_running')
+    highlight Pmenu guibg=#cccccc gui=bold
+endif
+
 " Folding
 set foldmethod=syntax
 nnoremap <Space> za
@@ -314,60 +346,6 @@ nnoremap gR gD:%s/<C-R>///gc<left><left><left>}
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-" Highilighting status line based on mode
-" first, enable status line always
-set laststatus=2
-
-"set statusline=
-"set statusline+=\[%n]                                  "buffernr
-"set statusline+=\ %<%f\                                "file for File+path use: F
-"set statusline+=\ \ %m%r%w\ \                          "Modified? Readonly? 
-"set statusline+=\ %y\                                  "FileType
-"set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}\     "Encoding
-"set statusline+=\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
-"set statusline+=\ %{&ff}\                              "FileFormat (dos/unix..) 
-"set statusline+=\ %{&spelllang}\ %{HighlightSearch()}\  "Spellanguage & Highlight on?
-"set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
-"set statusline+=\ col:%03c\                            "Colnr
-
-set statusline=
-set statusline+=\[%n]                                  "buffernr
-set statusline+=\ %<%f\                                "file for File+path use: F
-set statusline+=\%{fugitive#statusline()}\             "Git current branch
-set statusline+=\ \ %m%r%w\ \                          "Modified? Readonly? 
-set statusline+=\ %y\                                  "FileType
-set statusline+=\ %=\ Line:%l/%L\ (%03p%%)\            "Linenumber/total (%)
-set statusline+=\ col:%03c\                            "Colnr
-
-" check existence of file
-function LS() range
-  echo system('ls -lh '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'')
-endfunction
-
-function! HighlightSearch()
-    if &hls
-        return 'H'
-    else
-        return ''
-    endif
-endfunction
-"
-hi User0 guifg=#ffffff  guibg=#094afe ctermfg=White ctermbg=Black
-hi User1 guifg=#ffdad8  guibg=#880c0e ctermfg=Black ctermbg=Black
-hi User2 guifg=#000000  guibg=#F4905C ctermfg=Black ctermbg=Cyan
-hi User3 guifg=#292b00  guibg=#f4f597 ctermfg=Black ctermbg=LightRed
-hi User4 guifg=#112605  guibg=#aefe7B ctermfg=Black ctermbg=LightGreen
-hi User5 guifg=#051d00  guibg=#7dcc7d ctermfg=Black ctermbg=Green
-hi User7 guifg=#ffffff  guibg=#880c0e ctermfg=White ctermbg=Blue
-hi User8 guifg=#ffffff  guibg=#5b7fbb ctermfg=White ctermbg=Blue
-hi User9 guifg=#ffffff  guibg=#810085 ctermfg=White ctermbg=Magenta
-"
-" now set it up to change the status line based on mode
-if version >= 700
-    au InsertEnter * hi StatusLine term=reverse ctermfg=Yellow ctermbg=Black gui=bold guifg=Black guibg=Yellow
-    au InsertLeave * hi StatusLine term=reverse ctermfg=White ctermbg=Black gui=bold guifg=Black guibg=White
-endif
-
 " Loading custom vim settings for different projects
 au BufNewFile,BufRead *.{c,cc,cpp,h,hpp} call CheckForCustomConfiguration()
 
@@ -378,6 +356,9 @@ function! CheckForCustomConfiguration()
         exe 'source' custom_config_file
     endif
 endfunction
+
+" NerdTree
+map <F2> :NERDTreeToggle<CR>
 
 " vimdiff
 " ignore white spaces
@@ -491,33 +472,37 @@ endfunction
 let g:pymode_rope = 0
 
 " Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
+" let g:pymode_doc = 1
+" let g:pymode_doc_key = 'K'
 
 "Linting
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
-let g:pymode_lint_write = 1
-let g:pymode_lint_ignore="E703,E701,E129,E702"
+let g:pymode_lint_write = 0
+let g:pymode_lint_ignore="E703,E701,E129,E702,E0602,E203,C901"
 
 " Support virtualenv
-let g:pymode_virtualenv = 1
+" let g:pymode_virtualenv = 1
 
 " Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = '<leader>b'
+" let g:pymode_breakpoint = 1
+" let g:pymode_breakpoint_key = '<leader>b'
 
 " syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
+let g:pymode_syntax = 0
+let g:pymode_syntax_all = 0
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 " let g:pymode_folding = 0
 
-
+" Python Jedi configs
+let g:jedi#use_tabs_not_buffers = 1 " Go to a tab for definition
+let g:jedi#use_splits_not_buffers = "left"
+" let g:jedi#popup_select_first = 0
+let g:jedi#show_call_signatures = "1"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEEP THIS AT END OF .vimrc
@@ -544,3 +529,7 @@ endfunction
 au BufNewFile,BufRead * call SetLocalOptions(bufname("%"))
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Modifiablity
+au BufNewFile,BufRead * setlocal nomodifiable
+" au BufNewFile,BufRead * setlocal ro
