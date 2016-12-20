@@ -4,6 +4,8 @@ source ~/dotvim/bundles.vim
 syntax on
 syntax spell toplevel
 
+set encoding=utf-8
+
 set history=200
 
 " Map leader key
@@ -199,6 +201,7 @@ set wildmode=longest,list " This would emulate the typical shell completion
 
 " Powerline setup
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+let g:Powerline_symbols = 'fancy'
 set laststatus=2
 
 
@@ -481,6 +484,7 @@ let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
 let g:pymode_lint_write = 0
 let g:pymode_lint_ignore="E703,E701,E129,E702,E0602,E203,C901"
+let g:pymode_trim_whitespaces = 0 " Ideally you want to keep, but causes diff issues with git repos
 
 " Support virtualenv
 " let g:pymode_virtualenv = 1
