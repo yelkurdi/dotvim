@@ -79,6 +79,7 @@ Bundle 'vim-scripts/SyntaxRange.git'
 Bundle 'vim-scripts/fontsize'
 Bundle 'tfnico/vim-gradle.git'
 Bundle 'jamessan/vim-gnupg.git'
+Bundle 'ivanov/vim-ipython.git'
 
 filetype on
 filetype indent plugin on     " required!

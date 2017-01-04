@@ -8,6 +8,8 @@ set encoding=utf-8
 
 set history=200
 
+" set paste
+
 " Map leader key
 let mapleader = ","
 noremap \ ,
@@ -269,7 +271,7 @@ endfunction
 au BufWinEnter *.{c,cc,cpp,h,hpp} let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
 
 " Add line numbers per line
-set number
+" set number
 
 " Matching characters
 " Closing braces
@@ -293,9 +295,15 @@ set shiftwidth=4
 set expandtab
 
 " more subtle popup colors
+highlight Pmenu      ctermfg=Cyan  ctermbg=Blue     cterm=None
+highlight PmenuSel   ctermfg=White ctermbg=DarkBlue cterm=Bold
+highlight PmenuSbar  ctermbg=Cyan
+highlight PmenuThumb ctermfg=White
+
 if has ('gui_running')
     highlight Pmenu guibg=#cccccc gui=bold
 endif
+
 
 " Folding
 set foldmethod=syntax
@@ -535,5 +543,16 @@ au BufNewFile,BufRead * call SetLocalOptions(bufname("%"))
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Modifiablity
-au BufNewFile,BufRead * setlocal nomodifiable
-" au BufNewFile,BufRead * setlocal ro
+" au BufNewFile,BufRead * setlocal nomodifiable
+au BufNewFile,BufRead * setlocal ro
+
+
+" nnoremap <silent><leader>< :let @" = join(readfile($BUFFERFILE), "\n")<CR>
+" nnoremap <silent><leader>> :call writefile( split(@", "\n"), $BUFFERFILE )<CR>
+
+vmap <silent><leader>y :w! ~/.buffer<CR>
+" nnoremap <silent><leader>> :r! cat ~/.buffer
+
+" vmap <leader>y :'<,'>new! /u/yelkurdi/.buffer<CR>VGp:x<CR>
+" vmap <leader>y :"ay:redir /u/yelkurdi/.buffer<CR>: echo @a<CR>:redir END<CR>
+" nmap <leader>p :r! cat /u/yelkurdi/.buffer
