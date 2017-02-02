@@ -543,8 +543,8 @@ au BufNewFile,BufRead * call SetLocalOptions(bufname("%"))
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Modifiablity
-" au BufNewFile,BufRead * setlocal nomodifiable
-au BufNewFile,BufRead * setlocal ro
+au BufNewFile,BufRead * setlocal nomodifiable
+" au BufNewFile,BufRead * setlocal ro
 
 
 " nnoremap <silent><leader>< :let @" = join(readfile($BUFFERFILE), "\n")<CR>
@@ -556,3 +556,17 @@ vmap <silent><leader>y :w! ~/.buffer<CR>
 " vmap <leader>y :'<,'>new! /u/yelkurdi/.buffer<CR>VGp:x<CR>
 " vmap <leader>y :"ay:redir /u/yelkurdi/.buffer<CR>: echo @a<CR>:redir END<CR>
 " nmap <leader>p :r! cat /u/yelkurdi/.buffer
+
+" Check file
+func! GetSelectedText()
+    normal gv"xy
+    let result = getreg("x")
+    normal gv
+    return result
+endfunc
+
+function! CheckFile(fstr)
+    echo system('ls -alh '.a:fstr)
+endfunction
+
+vnoremap <leader>f :call CheckFile(GetSelectedText())<cr>
