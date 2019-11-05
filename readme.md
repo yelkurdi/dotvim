@@ -10,5 +10,6 @@ consider data potentially used in the future
 
 
 | language pair | TR | LDC | WMT | IWSLT | pair owner |
-| es-en         | | | | | Yousef |
+| ---           |----| --- | --- | ---   | ---     |
+| es-en         |    |     |     |       | Yousef |
 
